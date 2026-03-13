@@ -8,7 +8,7 @@ from setuptools import setup
 from setuptools._distutils.unixccompiler import UnixCCompiler
 
 _DIR = Path(__file__).parent
-_SOURCE_DIR = _DIR / "webrtc-audio-processing"
+_SOURCE_DIR = Path("webrtc-audio-processing")
 _WEBRTC_DIR = _SOURCE_DIR / "webrtc-audio-processing-1"
 
 __version__ = "1.2.5"
@@ -527,7 +527,7 @@ ext_modules = [
     PatchedPybind11Extension(
         name="webrtc_noise_gain_cpp",
         language="c++",
-        sources=[str(_DIR / "python.cpp")]
+        sources=["python.cpp"]
         + [str(_WEBRTC_DIR / "rtc_base" / f) for f in base_sources]
         + [str(_WEBRTC_DIR / "api" / f) for f in api_sources]
         + [str(_WEBRTC_DIR / "system_wrappers" / f) for f in system_wrappers_sources]
