@@ -21,9 +21,9 @@ jobs:
       - name: setup
         run: uv sync --group dev --no-install-project
       - name: build
-        run: uv run --no-project pip wheel .
+        run: uv build --wheel
       - name: install
-        run: uv run --no-project pip install --no-index -f . webrtc-noise-gain
+        run: uv pip install dist/*.whl
       - name: test
         run: uv run --no-project pytest -vv tests
   test_macos:
@@ -37,9 +37,9 @@ jobs:
       - name: setup
         run: uv sync --group dev --no-install-project
       - name: build
-        run: uv run --no-project pip wheel .
+        run: uv build --wheel
       - name: install
-        run: uv run --no-project pip install --no-index -f . webrtc-noise-gain
+        run: uv pip install dist/*.whl
       - name: test
         run: uv run --no-project pytest -vv tests
   # test_windows:
@@ -55,8 +55,8 @@ jobs:
   #     - name: setup
   #       run: uv sync --group dev --no-install-project
   #     - name: build
-  #       run: uv run --no-project pip wheel .
+  #       run: uv build --wheel
   #     - name: install
-  #       run: uv run --no-project pip install --no-index -f . webrtc-noise-gain
+  #       run: uv pip install dist/*.whl
   #     - name: test
   #       run: uv run --no-project pytest -vv tests
